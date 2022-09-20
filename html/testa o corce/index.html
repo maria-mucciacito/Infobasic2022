@@ -16,12 +16,13 @@
                 <h3>Testa o Croce</h3>
             </div>
         </div>
-        <div class="row my-5 mx-3" id="immagini">
+        <div class="row my-5 mx-3">
             <div class="col-3">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="scelta" id="testa" value=0>
                     <label class="form-check-label" for="testa">
-                        <img src="testa.png" width="50%" style="border-radius: 50%;">
+                        <!--<img src="testa.png" width="50%" style="border-radius: 50%;">-->
+                        testa
                     </label>
                   </div>
             </div>
@@ -30,7 +31,8 @@
                     <input class="form-check-input" type="radio" name="scelta" id="croce" checked value=1>
                     <label class="form-check-label" for="croce">
 
-                        <img src="croce.png" width="50%" style="border-radius: 50%;">
+                        <!--<img src="croce.png" width="50%" style="border-radius: 50%;">-->
+                        croce
                     </label>
                   </div>
             </div>
@@ -41,28 +43,58 @@
             </div>
         </div>
         <div class="row m-3">
-            <div class="col">
-                <h6 id="esito"></h6>
+            <div class="col-3">
+                <h6>Croce: </h6>
+                <h6 id="c"></h6>
+            </div>
+            <div class="col-3">
+                <h6>Testa: </h6>
+                <h6 id="t"></h6>
             </div>
         </div>
     </div>
     
     <script>
 
-        function lancio(){
-            let esito = document.getElementById("esito");
-            let risultato;
-            let scelta_utente = document.querySelector('input[name=scelta]:checked').value;
+        let testa = 0;
+        let croce = 0;
+        for(let i=0;i<=1000000;i++){
+
+            /*function lancio(){
+                let esito = document.getElementById("esito");
+                let risultato;
+                let scelta_utente = document.querySelector('input[name=scelta]:checked').value;*/
             let numero = Math.floor(Math.random() * 2);
-            if(numero==scelta_utente){
-               
-                esito.innerHTML = "Hai vinto!";
+            /*if(numero==0){
+                document.getElementById("immagini").innerHTML = '<img src="testa.png" width="50%" style="border-radius: 50%;">';
+            }
+            else {
+                document.getElementById("immagini").innerHTML = '<img src="croce.png" width="50%" style="border-radius: 50%;">';
+            }
+                if(numero==scelta_utente){
+                
+                    esito.innerHTML = "Hai vinto!";
+                }
+                else{
+                    
+                    esito.innerHTML = "Hai perso!";
+                }
+            }*/
+            if(numero==0){
+                testa ++;
             }
             else{
-                
-                esito.innerHTML = "Hai perso!";
+                croce++;
+
             }
+
         }
+        console.log(testa);
+        console.log(croce);
+        document.getElementById("t").innerHTML = testa;
+        document.getElementById("c").innerHTML = croce;
+
+
     </script>
 
 
