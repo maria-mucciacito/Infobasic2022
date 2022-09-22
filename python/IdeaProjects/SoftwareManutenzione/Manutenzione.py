@@ -13,7 +13,7 @@ class Manutenzione:
 
     @staticmethod
     def get_instance(id=0):
-        print("Retrive ID" + str(id) + "Instance")
+        print("Retrive ID  " + str(id) + "  Instance")
         conn = psycopg2.connect(
             host="tyke.db.elephantsql.com",
             database="uhqosvef",
@@ -22,6 +22,9 @@ class Manutenzione:
         )
         cur = conn.cursor()
         cur.execute('SELECT * FROM manutenzione WHERE id =' + str(id))
+        dictA = cur.fetchall()
+        for row in dictA:
+            print(row)
         conn.commit()
         cur.close()
         conn.close()
@@ -35,7 +38,7 @@ class Manutenzione:
             password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('INSERT INTO manutenzione(codManutenzione,data,oraInizio,oraFine,stato,descrizione) VALUES (%s,%s,%s,%s,%s,%s)',( cod, data, orai, oraf, stato, des))
+        cur.execute('INSERT INTO manutenzione(cod_manutenzione,data,oraInizio,oraFine,stato,descrizione) VALUES (%s,%s,%s,%s,%s,%s)',( cod, data, orai, oraf, stato, des))
         conn.commit()
         cur.close()
         conn.close()

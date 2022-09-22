@@ -12,7 +12,7 @@ class Reparto:
 
     @staticmethod
     def get_instance(id=0):
-        print("Retrive ID" + str(id) + "Instance")
+        print("Retrive ID " + str(id) + " Instance")
         conn = psycopg2.connect(
             host="tyke.db.elephantsql.com",
             database="uhqosvef",
@@ -21,6 +21,9 @@ class Reparto:
         )
         cur = conn.cursor()
         cur.execute('SELECT * FROM reparto WHERE id =' + str(id))
+        dictA = cur.fetchall()
+        for row in dictA:
+            print(row)
         conn.commit()
         cur.close()
         conn.close()
@@ -34,17 +37,13 @@ class Reparto:
             password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('INSERT INTO reparto(codReparto,nome,tipo,descrizione,capienza) VALUES (%s,%s,%s,%s,%s)', (cod, nome, tipo, descrizione, capienza))
+        cur.execute('INSERT INTO reparto(codreparto,nome,tipo,descrizione,capienza) VALUES (%s,%s,%s,%s,%s)', (cod, nome, tipo, descrizione, capienza))
         conn.commit()
         cur.close()
         conn.close()
 
-        r = Reparto()
-        r.codReparto = cod
-        r.nome = nome
-        r.tipo = tipo
-        r.descrizione = descrizione
-        r.capienza = capienza
+        r = Reparto(cod, nome, tipo, descrizione, capienza)
+     
 
 
     def get_codReparto(self):

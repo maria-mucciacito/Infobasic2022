@@ -11,7 +11,7 @@ class Persona:
 
     @staticmethod
     def get_instance(id=0):
-        print("Retrive ID" + str(id) + "Instance")
+        print("Retrive ID " + str(id) + " Instance")
         conn = psycopg2.connect(
             host="tyke.db.elephantsql.com",
             database="uhqosvef",
@@ -19,7 +19,11 @@ class Persona:
             password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('SELECT * FROM persona WHERE id =' + str(id))
+        cur.execute('SELECT * FROM persona WHERE id =' + str(id)+ ';')
+        dictA = cur.fetchall()
+        for row in dictA:
+            print(row)
+
         conn.commit()
         cur.close()
         conn.close()
@@ -33,7 +37,7 @@ class Persona:
             password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('INSERT INTO persona(codiceFiscale,nome,cognome,telefono,email) VALUES (%s,%s,%s,%s,%s)', (cf, nome, cognome, tel, email))
+        cur.execute('INSERT INTO persona(codice_fiscale,nome,cognome,telefono,email) VALUES (%s,%s,%s,%s,%s);', (cf, nome, cognome, tel, email))
         conn.commit()
         cur.close()
         conn.close()

@@ -19,6 +19,9 @@ class Macchina:
         )
         cur = conn.cursor()
         cur.execute('SELECT * FROM macchina WHERE id ='+ str(id))
+        dictA = cur.fetchall()
+        for row in dictA:
+            print(row)
         conn.commit()
         cur.close()
         conn.close()
@@ -33,7 +36,7 @@ class Macchina:
             password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('INSERT INTO macchina(codMachhina,scopo,tipo) VALUES (%s,%s,%s)',(cod,scopo,tipo))
+        cur.execute('INSERT INTO macchina(cod_macchina,scopo,tipo) VALUES (%s,%s,%s)',(cod,scopo,tipo))
         conn.commit()
         cur.close()
         conn.close()
