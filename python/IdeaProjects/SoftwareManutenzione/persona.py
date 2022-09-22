@@ -7,17 +7,33 @@ class Persona:
         self.cognome = cognome
         self.email = email
         self.telefono = tel
+        print("Creo classe" + self.__class__.name)
+
+    @staticmethod
+    def get_instance(id=0):
+        print("Retrive ID" + str(id) + "Instance")
+        conn = psycopg2.connect(
+            host="tyke.db.elephantsql.com",
+            database="uhqosvef",
+            user="uhqosvef",
+            password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
+        )
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM persona WHERE id =' + str(id))
+        conn.commit()
+        cur.close()
+        conn.close()
 
     @staticmethod
     def create_instance(cf, nome, cognome, tel, email):
         conn = psycopg2.connect(
-            host="localhost",
-            database="",
-            user="postgres",
-            password="postgres"
+            host="tyke.db.elephantsql.com",
+            database="uhqosvef",
+            user="uhqosvef",
+            password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
         )
         cur = conn.cursor()
-        cur.execute('INSERT INTO persona(codiceFiscale,nome,cognome,telefono,email')
+        cur.execute('INSERT INTO persona(codiceFiscale,nome,cognome,telefono,email) VALUES (%s,%s,%s,%s,%s)', (cf, nome, cognome, tel, email))
         conn.commit()
         cur.close()
         conn.close()

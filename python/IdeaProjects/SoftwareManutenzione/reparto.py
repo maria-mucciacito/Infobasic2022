@@ -1,3 +1,5 @@
+import psycopg2
+
 class Reparto:
 
     def __init__(self, cod, nome, tipo, descrizione, capienza):
@@ -6,6 +8,44 @@ class Reparto:
         self.tipo = tipo
         self.descrizione = descrizione
         self.capienza = capienza
+
+
+    @staticmethod
+    def get_instance(id=0):
+        print("Retrive ID" + str(id) + "Instance")
+        conn = psycopg2.connect(
+            host="tyke.db.elephantsql.com",
+            database="uhqosvef",
+            user="uhqosvef",
+            password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
+        )
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM reparto WHERE id =' + str(id))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+    @staticmethod
+    def create_instance(cod, nome, tipo, descrizione, capienza):
+        conn = psycopg2.connect(
+            host="tyke.db.elephantsql.com",
+            database="uhqosvef",
+            user="uhqosvef",
+            password="N8mqqXPS_m2WElIIZ1eyIcf3qielKS97"
+        )
+        cur = conn.cursor()
+        cur.execute('INSERT INTO reparto(codReparto,nome,tipo,descrizione,capienza) VALUES (%s,%s,%s,%s,%s)', (cod, nome, tipo, descrizione, capienza))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        r = Reparto()
+        r.codReparto = cod
+        r.nome = nome
+        r.tipo = tipo
+        r.descrizione = descrizione
+        r.capienza = capienza
+
 
     def get_codReparto(self):
         return self.codReparto
