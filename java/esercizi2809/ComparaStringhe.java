@@ -17,7 +17,24 @@ public class ComparaStringhe {
     }
  
     private static int compareStrings(String a, String b, String c) {
-        
-        return 4;
+        a.toLowerCase();
+        b.toLowerCase();
+        c.toLowerCase();
+        if (a.equals(b)){
+            if(a.equals(c)){
+                return 3;
+            } else {
+                return 2;
+            }
+        } else {
+            if(a.equals(c)){
+                return 2;
+            } else {
+                return 1;
+            }
+
+        }
+
+       
     }
 }
