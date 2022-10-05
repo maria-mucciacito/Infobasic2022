@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import java.util.Arrays;
-import org.apache.commons.lang3.ArrayUtils;
 
 public class FusioneArray {
     public static void main(String[] args) {
@@ -27,7 +25,13 @@ public class FusioneArray {
         }
 
         int[] myArray3 = new int[len1+len2];
-        myArray3 = ArrayUtils.addAll(myArrayInteri1,myArrayInteri2);
+        for(int i=0;i<myArrayInteri1.length; i++){
+                myArray3[i] = myArrayInteri1[i];
+        }
+        for(int j=myArrayInteri1.length; j!=myArray3.length; j++ ){
+            myArray3[j] = myArrayInteri2[j];
+        }
+        
 
     }
 }
