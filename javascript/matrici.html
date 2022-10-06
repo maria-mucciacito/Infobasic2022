@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrici</title>
+</head>
+<body>
+
+    <div class="h4 m-5">Crea la tua matrice</div>
+    <div class="container m-3">
+        
+        <div class="row m-3">
+            <div class="col-6">
+                <input type="text" class="form-control" placeholder="numColonnexnumRighe esempio:2x3" id="matrice" >
+
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" onclick="schiaccia()">Crea la tua matrice</button>
+
+            </div>
+        </div>
+        
+
+
+
+    </div>
+    <div class="container m-5">
+        <h6 id="content"></h6>
+        <table class="table-sm table-bordered " id="table"></table>
+    </div>
+       
+            
+    
+    <script>
+
+        function schiaccia(){
+            var stringa = document.getElementById("matrice").value;
+            console.log(stringa);
+            var colonne = parseInt(stringa.substr(0,1));
+            var righe = parseInt(stringa.substr(2,2));
+            console.log(colonne);
+            console.log(righe);
+            document.getElementById("content").innerHTML = "Creazione matrice " + colonne + " colonne " + righe + " righe ";
+            document.getElementById("table").innerHTML = crea(righe,colonne);
+        }
+
+        
+
+        function crea(row,col){
+
+            var body = '';
+            for(let i=0; i<row; i++){
+             
+                body += '<tr>';
+                for(let j=0; j<col; j++){
+                 
+                    body += '<td>'+0+'</td>';
+                }
+                body+= '</tr>';
+
+            }
+            console.log(body);
+            return body
+            //document.getElementById("matrice").innerHtml = body;
+            //return '<table class=table'> + body + '</table>';
+
+        }
+
+        
+
+
+
+
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>
