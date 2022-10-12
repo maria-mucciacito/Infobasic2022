@@ -1,5 +1,32 @@
 public class Lampadina {
    
+    protected String[] situazioni = {"spenta","accesa","rotto"};
+    protected String stato;
+    protected static boolean statoCorrente = true;
+
+    public Lampadina(){
+        this.stato = situazioni[0];
+        System.out.println("La lampadina adesso è " + this.stato);
+        System.out.println("Dopo 10 click la lampadina si rompe");
+    }
+
+    public String getStato(){
+        return stato;
+    }  
+
+    public static boolean getStatoCorrente(){
+        return statoCorrente;
+    }
+
+    public static void setStatoCorrente(boolean stato){
+        statoCorrente = stato;
+    }
+}
+
+// CODICE DEL PRIMO ESERCIZIO SULLA LAMPADINA SENZA AGGIORNAMENTO
+
+/*public class Lampadina {
+   
     private int contatore = 0;
     private String[] situazioni = {"spenta","accesa","rotta"};
     private String stato;
@@ -33,9 +60,4 @@ public class Lampadina {
             }
         }
     }
-
-
-
-
-    
-}
+}*/

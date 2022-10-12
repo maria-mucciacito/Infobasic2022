@@ -2,7 +2,7 @@ public class Contatore{
     private int contatore;
 
     public Contatore(){
-        this.contatore = 0;
+        contatore = 0;  //il this in questo caso è superfluo
     }
 
     public Contatore(int contatore){
@@ -22,7 +22,7 @@ public class Contatore{
     }
 
     public void increment(){
-        this.contatore += 1;
+        contatore ++;  //il this non serve
     }
     
 

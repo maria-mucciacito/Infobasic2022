@@ -1,4 +1,3 @@
-import java.lang.invoke.LambdaMetafactory;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +17,10 @@ public class Main {
 
         //test classe Lampadina
         Lampadina l1 = new Lampadina();
-        System.out.println(l1.getContatore());
-        l1.click();
+        //System.out.println(l1.getContatore());
+        //l1.click();
         System.out.println(l1.getStato());
-        System.out.println(l1.getContatore());
+        /*System.out.println(l1.getContatore());
         l1.click();
         l1.click();
         l1.click();
@@ -31,6 +30,36 @@ public class Main {
         l1.click();
         l1.click();
         l1.click();
-        l1.click();
+        l1.click();*/
+
+        //test classe interruttore
+        Interruttore i1 = new Interruttore(l1);
+        Interruttore i2 = new Interruttore(l1);
+
+        i1.click();
+        System.out.println(l1.getStato());
+        i2.click();
+        System.out.println(l1.getStato());
+        i2.click();
+        i2.click();
+        i2.click();
+        i2.click();
+        i2.click();
+        i2.click();
+        i2.click();
+        i2.click();
+        i1.click();
+        i2.click();
+        Lampadina l2 = new Lampadina();
+        Interruttore i3 = new Interruttore(l2);
+        i3.click();
+        i3.click();
+        Lampadina.setStatoCorrente(false);
+        i2.click();
+        i1.click();
+        i3.click();
+        System.out.println(l1.getStato());
+        System.out.println(l2.getStato());
+
     }
 }
