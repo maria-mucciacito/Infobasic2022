@@ -43,7 +43,7 @@
 						<input class="input100" type="password" name="password" placeholder="New Password" onclick="myFunction()" id="newpassword">
 					</div>
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="passwordrepeat" placeholder="Repeat Password">
+						<input class="input100" type="password" name="passwordrepeat" placeholder="Repeat Password" id="passwordrepeat">
 
 					</div>
 
@@ -60,7 +60,6 @@
 
     <script>
         function myFunction() {
-            console.log("");
             var x = document.getElementById("newpassword");
             if (x.type === "password") {
                 x.type = "text";
