@@ -14,7 +14,6 @@ public class Main {
         contatore2.reset();
         System.out.println(contatore1.getContatore());  
         System.out.println(contatore2.getContatore()); 
-
         //test classe Lampadina
         Lampadina l1 = new Lampadina();
         //System.out.println(l1.getContatore());
