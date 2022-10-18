@@ -6,7 +6,7 @@ let credentials = {
     database: "olhdguej",
     password: "QAps0dGXP-wxx-k-hUixdmQlvsh_943v",
     port: 5432,
-  };
+};
 
 let pool = new Pool(credentials);
 
