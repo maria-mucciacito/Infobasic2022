@@ -10,4 +10,11 @@ let credentials = {
 
 let pool = new Pool(credentials);
 
-module.exports = pool;
+//module.exports = pool;
+module.exports = {
+    getPool: function () {
+      if (pool) return pool; // if it is already there, grab it here
+      pool = new pg.Pool(credentials);
+      return pool;
+    }
+}
