@@ -12,6 +12,9 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var logupRouter = require('./routes/logup');
 var TaxiRouter = require('./crud/Taxi');
+var PaymentRouter = require('./crud/Pagamento');
+var UserRouter = require('./crud/User');
+var PrenotationRouter = require('./crud/Prenotazione');
 
 var app = express();
 
@@ -36,15 +39,35 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/signup', logupRouter);
+//Interrogazione CRUD entity taxi
 app.use('/taxi', TaxiRouter.getTaxis);
-app.use('/taxi/', TaxiRouter.getTaxiById);
+app.use('/taxi', TaxiRouter.getTaxiById);
 app.use('/taxi', TaxiRouter.createTaxi);
 app.use('/taxi', TaxiRouter.updateTaxi);
+app.use('/taxi', TaxiRouter.deleteTaxi);
+//Interrogazione CRUD entity payment
+app.use('/payment', PaymentRouter.getPayments);
+app.use('/payment', PaymentRouter.getPaymentById);
+app.use('/payment', PaymentRouter.createPayment);
+app.use('/payment', PaymentRouter.updatePayment);
+app.use('/payment', PaymentRouter.deletePayment);
+//Interrogazione CRUD entity user
+app.use('/user', UserRouter.getUsers);
+app.use('/user', UserRouter.getUserById);
+app.use('/user', UserRouter.createUser);
+app.use('/user', UserRouter.updateUser);
+app.use('/user', UserRouter.deleteUser);
+//Interrogazione CRUD entity prenotazione 
+app.use('/prenotation', PrenotationRouter.getPrenotations);
+app.use('/prenotation', PrenotationRouter.getPrenotationById);
+app.use('/prenotation', PrenotationRouter.createPrenotation);
+app.use('/prenotation', PrenotationRouter.updatePrenotation);
+app.use('/prenotation', PrenotationRouter.deletePrenotation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  //res.render('Error 404');
-  next(createError(404));
+  res.render('notfoundpage');
+  //next(createError(404));
 });
 
 // error handler

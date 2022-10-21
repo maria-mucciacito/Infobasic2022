@@ -27,8 +27,8 @@ const getTaxiById =
 
 const createTaxi = 
     router.post('/', (req,res)=>{
-        const {targa, modello, descrizione, nome } = req.body
-        db.query('INSERT INTO taxi (targa,modello,descrizione,nome) VALUES ($1,$2,$3,$4) RETURNING id;', [targa,modello,descrizione,nome], (error,results)=>{
+        const {nome, targa, modello, descrizione } = req.body
+        db.query('INSERT INTO taxi (nome,targa,modello,descrizione) VALUES ($1,$2,$3,$4) RETURNING id;', [nome,targa,modello,descrizione], (error,results)=>{
             if(error){
                 console.log("Errore strategico");
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
@@ -43,10 +43,9 @@ const createTaxi =
 const updateTaxi = 
     router.put('/:id', (req,res)=>{
         var id = parseInt(req.params.id)
-        console.log(id)
-        const {targa, modello, descrizione, nome } = req.body
-        db.query('UPDATE taxi SET targa=$1, modello=$2, descrizione=$3, nome=$4 WHERE id=$5;',
-        [targa,modello,descrizione,nome,id],
+        const {nome, targa, modello, descrizione } = req.body
+        db.query('UPDATE taxi SET nome=$1, targa=$2, modello=$3, descrizione=$4 WHERE id=$5;',
+        [nome,targa,modello,descrizione,id],
         (error,results)=>{
             if(error){
                 throw error
@@ -57,6 +56,15 @@ const updateTaxi =
 
     });
 
-//const deleteTaxi;
+const deleteTaxi= 
+    router.delete('/:id', (req,res)=>{
+        var id = parseInt(req.params.id)
+        db.query('DELETE FROM taxi WHERE id=$1;',[id], (error,results)=>{
+            if(error){
+                throw error
+            }
+            res.status(200).send("Taxi deleted with ID: " + id)
+        })
+    });
 
-module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi};
+module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi};
