@@ -16,23 +16,24 @@ router.post('/',(req,res)=>{
   var user = req.body.username;
   var password = req.body.password;
   var values = [user,password];
+  var text = 'SELECT * FROM utente WHERE email = $1 AND password = $2;';
   if(user==credentials.email && password==credentials.password){
     req.session.user = user
     res.redirect('/login/dashboard')
   } else {
-    res.end("Invalid")
+    db.query(text,values,(err,result)=> {
+      if(err){
+        console.log(err.stack)
+      }
+      if(result.rows){
+        res.render('index');
+      } else {
+        res.render('login', { message:'Le credenziali sono errate!' });
+      }
+    });
+    //res.end("Invalid")
   }
-  var text = 'SELECT * FROM utente WHERE email = $1 AND password = $2;';
-  db.query(text,values,(err,result)=> {
-    if(err){
-      console.log(err.stack)
-    }
-    if(result.rows != ''){
-      res.render('index');
-    } else {
-      res.render('login', { message:'Le credenziali sono errate!' });
-    }
-  });
+  
 })
 
 router.get('/dashboard',(req,res)=>{

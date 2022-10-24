@@ -56,29 +56,29 @@ app.use('/signup', logupRouter);
 app.use('/logout', logoutRouter);
 
 //Interrogazione CRUD entity taxi
-app.use('/taxi', TaxiRouter.getTaxis);
-app.use('/taxi', TaxiRouter.getTaxiById);
-app.use('/taxi', TaxiRouter.createTaxi);
-app.use('/taxi', TaxiRouter.updateTaxi);
-app.use('/taxi', TaxiRouter.deleteTaxi);
+app.use('/dashboard/taxi', TaxiRouter.getTaxis);
+app.use('/dashboard/taxi', TaxiRouter.getTaxiById);
+app.use('/dashboard/taxi', TaxiRouter.createTaxi);
+app.use('/dashboard/taxi', TaxiRouter.updateTaxi);
+app.use('/dashboard/taxi', TaxiRouter.deleteTaxi);
 //Interrogazione CRUD entity payment
-app.use('/payment', PaymentRouter.getPayments);
-app.use('/payment', PaymentRouter.getPaymentById);
-app.use('/payment', PaymentRouter.createPayment);
-app.use('/payment', PaymentRouter.updatePayment);
-app.use('/payment', PaymentRouter.deletePayment);
+app.use('/dashboard/payment', PaymentRouter.getPayments);
+app.use('/dashboard/payment', PaymentRouter.getPaymentById);
+app.use('/dashboard/payment', PaymentRouter.createPayment);
+app.use('/dashboard/payment', PaymentRouter.updatePayment);
+app.use('/dashboard/payment', PaymentRouter.deletePayment);
 //Interrogazione CRUD entity user
-app.use('/user', UserRouter.getUsers);
-app.use('/user', UserRouter.getUserById);
-app.use('/user', UserRouter.createUser);
-app.use('/user', UserRouter.updateUser);
-app.use('/user', UserRouter.deleteUser);
+app.use('/dashboard/user', UserRouter.getUsers);
+app.use('/dashboard/user', UserRouter.getUserById);
+app.use('/dashboard/user', UserRouter.createUser);
+app.use('/dashboard/user', UserRouter.updateUser);
+app.use('/dashboard/user', UserRouter.deleteUser);
 //Interrogazione CRUD entity prenotazione 
-app.use('/prenotation', PrenotationRouter.getPrenotations);
-app.use('/prenotation', PrenotationRouter.getPrenotationById);
-app.use('/prenotation', PrenotationRouter.createPrenotation);
-app.use('/prenotation', PrenotationRouter.updatePrenotation);
-app.use('/prenotation', PrenotationRouter.deletePrenotation);
+app.use('/dashboard/prenotation', PrenotationRouter.getPrenotations);
+app.use('/dashboard/prenotation', PrenotationRouter.getPrenotationById);
+app.use('/dashboard/prenotation', PrenotationRouter.createPrenotation);
+app.use('/dashboard/prenotation', PrenotationRouter.updatePrenotation);
+app.use('/dashboard/prenotation', PrenotationRouter.deletePrenotation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -98,6 +98,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(3000);
+app.listen(3001);
 
 module.exports = app;

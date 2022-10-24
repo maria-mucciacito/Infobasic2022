@@ -8,9 +8,13 @@ const getTaxis =
     router.get('/', (req,res)=>{
         db.query('SELECT * FROM taxi ORDER BY id ASC;', (error,results)=>{
             if(error){
-                throw error
+                console.log(error) 
+            } else {
+                res.render('dashboard/taxi', {data: results.rows})
+
             }
-            res.status(200).json(results.rows)
+
+            //res.status(200).json(results.rows)
         })
     });
 
@@ -49,8 +53,10 @@ const updateTaxi =
         (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/taxi')
             }
-            res.status(200).send("Taxi modified with ID: " + id)
+            //res.status(200).send("Taxi modified with ID: " + id)
         })
 
 
