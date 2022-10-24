@@ -6,11 +6,17 @@ var logger = require('morgan');
 var hbs = require('hbs');
 var db = require('./routes/db');
 const bodyParser = require('body-parser')
+//credenziali per database
+require('dotenv').config();
+//sessione per login
+const session = require("express-session");
+const {v4:uuidv4} = require("uuid");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var logupRouter = require('./routes/logup');
+var logoutRouter = require('./routes/logout');
 var TaxiRouter = require('./crud/Taxi');
 var PaymentRouter = require('./crud/Pagamento');
 var UserRouter = require('./crud/User');
@@ -35,10 +41,20 @@ app.use(
   })
 )
 
+//processi per stabilire la sessione per il login
+app.use(session({
+  secret: uuidv4(),
+  resave: false,
+  saveUninitialized: true
+}))
+
+//Routers per autentificazione
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/signup', logupRouter);
+app.use('/logout', logoutRouter);
+
 //Interrogazione CRUD entity taxi
 app.use('/taxi', TaxiRouter.getTaxis);
 app.use('/taxi', TaxiRouter.getTaxiById);
@@ -80,5 +96,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+app.listen(3000);
 
 module.exports = app;

@@ -27,8 +27,8 @@ const getUserById =
 
 const createUser = 
     router.post('/', (req,res)=>{
-        const {codiceFiscale, nome, cognome, email, password } = req.body
-        db.query('INSERT INTO taxi (codice_fiscale,nome,cognome,email,password) VALUES ($1,$2,$3,$4,$5) RETURNING id;', [codiceFiscale,nome,cognome,email,password], (error,results)=>{
+        const {codiceFiscale, nome, cognome, email, password,ruolo } = req.body
+        db.query('INSERT INTO taxi (codice_fiscale,nome,cognome,email,password,ruolo) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id;', [codiceFiscale,nome,cognome,email,password,ruolo], (error,results)=>{
             if(error){
                 console.log("Errore strategico");
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
@@ -43,9 +43,9 @@ const createUser =
 const updateUser= 
     router.put('/:id', (req,res)=>{
         var id = parseInt(req.params.id)
-        const {codiceFiscale, nome, cognome, email, password } = req.body
-        db.query('UPDATE utente SET codice_fiscale=$1, nome=$2, cognome=$3, email=$4, password=$5 WHERE id=$6;',
-        [codiceFiscale,nome,cognome,email,password],
+        const {codiceFiscale, nome, cognome, email, password,ruolo } = req.body
+        db.query('UPDATE utente SET codice_fiscale=$1, nome=$2, cognome=$3, email=$4, password=$5 ruolo=$6 WHERE id=$7;',
+        [codiceFiscale,nome,cognome,email,password,ruolo],
         (error,results)=>{
             if(error){
                 throw error

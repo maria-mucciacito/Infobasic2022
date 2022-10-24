@@ -27,8 +27,8 @@ const getPrenotationById =
 
 const createPrenotation = 
     router.post('/', (req,res)=>{
-        const {data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento } = req.body
-        db.query('INSERT INTO prenotazione (data, ora_partenza, punto_partenza, punto_arrivo, costo, distanza_km, utente, taxi, pagamento) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING id;', [data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento], (error,results)=>{
+        const {data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento, codePrenotazione } = req.body
+        db.query('INSERT INTO prenotazione (data, ora_partenza, punto_partenza, punto_arrivo, costo, distanza_km, utente, taxi, pagamento, code_prenotazione) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING id;', [data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento, codePrenotazione], (error,results)=>{
             if(error){
                 console.log("Errore strategico");
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
@@ -43,9 +43,9 @@ const createPrenotation =
 const updatePrenotation = 
     router.put('/:id', (req,res)=>{
         var id = parseInt(req.params.id)
-        const {data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento } = req.body
-        db.query('UPDATE taxi SET data=$1, ora_partenza=$2, punto_partenza=$3, punto_arrivo=$4, costo=$5, distanza_km=$6, utente=$7, taxi=$8, pagamento=$9 WHERE id=$10;',
-        [data,oraPartenza,puntoPartenza,puntoArrivo,costo,distanzaKm,utente,taxi,pagamento],
+        const {data, oraPartenza, puntoPartenza, puntoArrivo, costo, distanzaKm, utente, taxi, pagamento, codePrenotazione } = req.body
+        db.query('UPDATE taxi SET data=$1, ora_partenza=$2, punto_partenza=$3, punto_arrivo=$4, costo=$5, distanza_km=$6, utente=$7, taxi=$8, pagamento=$9, code_prenotazione=$10 WHERE id=$11;',
+        [data,oraPartenza,puntoPartenza,puntoArrivo,costo,distanzaKm,utente,taxi,pagamento,codePrenotazione],
         (error,results)=>{
             if(error){
                 throw error
