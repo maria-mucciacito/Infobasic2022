@@ -1,21 +1,21 @@
 var express = require('express');
 //const { response } = require('../app');
 var router = express.Router();
-var dbPool = require('../routes/db');
+var dbPool = require('../db');
 var db = dbPool.getPool();
 
 const getUsers = 
-    router.get('/', (req,res)=>{
+    (req,res)=>{
         db.query('SELECT * FROM utente ORDER BY id ASC;', (error,results)=>{
             if(error){
                 throw error
             }
             res.status(200).json(results.rows)
         })
-    });
+    };
 
 const getUserById = 
-    router.get('/:id',(req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id);
         db.query('SELECT * FROM utente WHERE id=$1;',[id], (error,results)=>{
             if(error){
@@ -23,10 +23,10 @@ const getUserById =
             }
             res.status(200).json(results.rows)
         })
-    });
+    };
 
 const createUser = 
-    router.post('/', (req,res)=>{
+    (req,res)=>{
         const {codiceFiscale, nome, cognome, email, password,ruolo } = req.body
         db.query('INSERT INTO taxi (codice_fiscale,nome,cognome,email,password,ruolo) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id;', [codiceFiscale,nome,cognome,email,password,ruolo], (error,results)=>{
             if(error){
@@ -38,10 +38,10 @@ const createUser =
             }
             
         })
-    });
+    };
 
 const updateUser= 
-    router.put('/:id', (req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id)
         const {codiceFiscale, nome, cognome, email, password,ruolo } = req.body
         db.query('UPDATE utente SET codice_fiscale=$1, nome=$2, cognome=$3, email=$4, password=$5 ruolo=$6 WHERE id=$7;',
@@ -54,10 +54,10 @@ const updateUser=
         })
 
 
-    });
+    };
 
 const deleteUser= 
-    router.delete('/:id', (req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id)
         db.query('DELETE FROM utente WHERE id=$1;',[id], (error,results)=>{
             if(error){
@@ -65,6 +65,6 @@ const deleteUser=
             }
             res.status(200).send("User deleted with ID: " + id)
         })
-    });
+    };
 
 module.exports = {getUsers,getUserById,createUser,updateUser,deleteUser};

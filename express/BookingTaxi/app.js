@@ -17,10 +17,10 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var logupRouter = require('./routes/logup');
 var logoutRouter = require('./routes/logout');
-var TaxiRouter = require('./crud/Taxi');
-var PaymentRouter = require('./crud/Pagamento');
-var UserRouter = require('./crud/User');
-var PrenotationRouter = require('./crud/Prenotazione');
+var TaxiRouter = require('./routes/crud/Taxi');
+var PaymentRouter = require('./routes/crud/Pagamento');
+var UserRouter = require('./routes/crud/User');
+var PrenotationRouter = require('./routes/crud/Prenotazione');
 
 
 var app = express();
@@ -57,30 +57,30 @@ app.use('/signup', logupRouter);
 app.use('/logout', logoutRouter);
 
 //Interrogazione CRUD entity taxi
-app.use('/dashboard/taxi', TaxiRouter.getTaxis);
-app.use('/dashboard/taxi/show', TaxiRouter.getTaxiById);
-app.use('/dashboard/taxi/create', TaxiRouter.createTaxi);
-app.use('/dashboard/taxi/update', TaxiRouter.updateTaxi);
-app.use('/dashboard/taxi/delete', TaxiRouter.deleteTaxi);
-app.use('/dashboard/taxt/form', TaxiRouter.FormUpdateTaxi);
+app.get('/dashboard/taxi', TaxiRouter.getTaxis);
+app.get('/dashboard/taxi/:id', TaxiRouter.getTaxiById);
+app.post('/dashboard/taxi', TaxiRouter.createTaxi);
+app.put('/dashboard/taxi/:id', TaxiRouter.updateTaxi);
+app.delete('/dashboard/taxi/:id', TaxiRouter.deleteTaxi);
+//app.get('/dashboard/taxt/form', TaxiRouter.FormUpdateTaxi);
 //Interrogazione CRUD entity payment
-app.use('/dashboard/payment', PaymentRouter.getPayments);
-app.use('/dashboard/payment', PaymentRouter.getPaymentById);
-app.use('/dashboard/payment', PaymentRouter.createPayment);
-app.use('/dashboard/payment', PaymentRouter.updatePayment);
-app.use('/dashboard/payment', PaymentRouter.deletePayment);
+app.get('/dashboard/payment', PaymentRouter.getPayments);
+app.get('/dashboard/payment/:id', PaymentRouter.getPaymentById);
+app.post('/dashboard/payment', PaymentRouter.createPayment);
+app.put('/dashboard/payment/:id', PaymentRouter.updatePayment);
+app.delete('/dashboard/payment/:id', PaymentRouter.deletePayment);
 //Interrogazione CRUD entity user
-app.use('/dashboard/user', UserRouter.getUsers);
-app.use('/dashboard/user', UserRouter.getUserById);
-app.use('/dashboard/user', UserRouter.createUser);
-app.use('/dashboard/user', UserRouter.updateUser);
-app.use('/dashboard/user', UserRouter.deleteUser);
+app.get('/dashboard/user', UserRouter.getUsers);
+app.get('/dashboard/user/:id', UserRouter.getUserById);
+app.post('/dashboard/user', UserRouter.createUser);
+app.put('/dashboard/user/:id', UserRouter.updateUser);
+app.delete('/dashboard/user/:id', UserRouter.deleteUser);
 //Interrogazione CRUD entity prenotazione 
-app.use('/dashboard/prenotation', PrenotationRouter.getPrenotations);
-app.use('/dashboard/prenotation', PrenotationRouter.getPrenotationById);
-app.use('/dashboard/prenotation', PrenotationRouter.createPrenotation);
-app.use('/dashboard/prenotation', PrenotationRouter.updatePrenotation);
-app.use('/dashboard/prenotation', PrenotationRouter.deletePrenotation);
+app.get('/dashboard/prenotation', PrenotationRouter.getPrenotations);
+app.get('/dashboard/prenotation/:id', PrenotationRouter.getPrenotationById);
+app.post('/dashboard/prenotation', PrenotationRouter.createPrenotation);
+app.put('/dashboard/prenotation/:id', PrenotationRouter.updatePrenotation);
+app.delete('/dashboard/prenotation/:id', PrenotationRouter.deletePrenotation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

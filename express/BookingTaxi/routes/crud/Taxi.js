@@ -1,11 +1,11 @@
 var express = require('express');
 //const { response } = require('../app');
 var router = express.Router();
-var dbPool = require('../routes/db');
+var dbPool = require('../db');
 var db = dbPool.getPool();
 
 const getTaxis = 
-    router.get('/', (req,res)=>{
+    (req,res)=>{
         db.query('SELECT * FROM taxi ORDER BY id ASC;', (error,results)=>{
             if(error){
                 console.log(error) 
@@ -16,10 +16,10 @@ const getTaxis =
 
             //res.status(200).json(results.rows)
         })
-    });
+    };
 
 const getTaxiById = 
-    router.get('/:id',(req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id);
         db.query('SELECT * FROM taxi WHERE id=$1;',[id], (error,results)=>{
             if(error){
@@ -27,10 +27,10 @@ const getTaxiById =
             }
             res.status(200).json(results.rows)
         })
-    });
+    };
 
 const createTaxi = 
-    router.post('/', (req,res)=>{
+    (req,res)=>{
         const {nome, targa, modello, descrizione } = req.body
         db.query('INSERT INTO taxi (nome,targa,modello,descrizione) VALUES ($1,$2,$3,$4) RETURNING id;', [nome,targa,modello,descrizione], (error,results)=>{
             if(error){
@@ -42,16 +42,16 @@ const createTaxi =
             }
             
         })
-    });
+    };
 
-const FormUpdateTaxi = 
-    router.get('/:id', (req,res)=> {
-    var id = parseInt(req.params.id)
-    res.render('dashboard/updateTaxi', {data : id});
-    })
+/*const FormUpdateTaxi = 
+    (req,res)=> {
+        //var id = parseInt(req.params.id)
+        res.render('dashboard/updateTaxi');
+    }*/
 
 const updateTaxi = 
-    router.put('/:id', (req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id)
         const {nome, targa, modello, descrizione } = req.body
         console.log(id)
@@ -65,10 +65,10 @@ const updateTaxi =
             }
             //res.status(200).send("Taxi modified with ID: " + id)
         })
-    });
+    };
 
 const deleteTaxi= 
-    router.delete('/:id', (req,res)=>{
+    (req,res)=>{
         var id = parseInt(req.params.id)
         db.query('DELETE FROM taxi WHERE id=$1;',[id], (error,results)=>{
             if(error){
@@ -76,6 +76,6 @@ const deleteTaxi=
             }
             res.status(200).send("Taxi deleted with ID: " + id)
         })
-    });
+    };
 
-module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi,FormUpdateTaxi};
+module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi};
