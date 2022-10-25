@@ -44,10 +44,17 @@ const createTaxi =
         })
     });
 
+const FormUpdateTaxi = 
+    router.get('/:id', (req,res)=> {
+    var id = parseInt(req.params.id)
+    res.render('dashboard/updateTaxi', {data : id});
+    })
+
 const updateTaxi = 
     router.put('/:id', (req,res)=>{
         var id = parseInt(req.params.id)
         const {nome, targa, modello, descrizione } = req.body
+        console.log(id)
         db.query('UPDATE taxi SET nome=$1, targa=$2, modello=$3, descrizione=$4 WHERE id=$5;',
         [nome,targa,modello,descrizione,id],
         (error,results)=>{
@@ -58,8 +65,6 @@ const updateTaxi =
             }
             //res.status(200).send("Taxi modified with ID: " + id)
         })
-
-
     });
 
 const deleteTaxi= 
@@ -73,4 +78,4 @@ const deleteTaxi=
         })
     });
 
-module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi};
+module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi,FormUpdateTaxi};

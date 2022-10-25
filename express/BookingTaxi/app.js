@@ -22,6 +22,7 @@ var PaymentRouter = require('./crud/Pagamento');
 var UserRouter = require('./crud/User');
 var PrenotationRouter = require('./crud/Prenotazione');
 
+
 var app = express();
 
 // view engine setup
@@ -57,10 +58,11 @@ app.use('/logout', logoutRouter);
 
 //Interrogazione CRUD entity taxi
 app.use('/dashboard/taxi', TaxiRouter.getTaxis);
-app.use('/dashboard/taxi', TaxiRouter.getTaxiById);
-app.use('/dashboard/taxi', TaxiRouter.createTaxi);
-app.use('/dashboard/taxi', TaxiRouter.updateTaxi);
-app.use('/dashboard/taxi', TaxiRouter.deleteTaxi);
+app.use('/dashboard/taxi/show', TaxiRouter.getTaxiById);
+app.use('/dashboard/taxi/create', TaxiRouter.createTaxi);
+app.use('/dashboard/taxi/update', TaxiRouter.updateTaxi);
+app.use('/dashboard/taxi/delete', TaxiRouter.deleteTaxi);
+app.use('/dashboard/taxt/form', TaxiRouter.FormUpdateTaxi);
 //Interrogazione CRUD entity payment
 app.use('/dashboard/payment', PaymentRouter.getPayments);
 app.use('/dashboard/payment', PaymentRouter.getPaymentById);
