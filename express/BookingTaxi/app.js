@@ -57,18 +57,20 @@ app.use('/signup', logupRouter);
 app.use('/logout', logoutRouter);
 
 //Interrogazione CRUD entity taxi
+app.get('/dashboard/taxi/insert', TaxiRouter.insertTaxiForm);
 app.get('/dashboard/taxi', TaxiRouter.getTaxis);
-//app.get('/dashboard/taxi/:id', TaxiRouter.getTaxiById);
+app.get('/dashboard/taxi/get/:id', TaxiRouter.getTaxiById);
 app.post('/dashboard/taxi', TaxiRouter.createTaxi);
 app.post('/dashboard/taxi/:id', TaxiRouter.updateTaxi);
 app.get('/dashboard/taxi/delete/:id', TaxiRouter.deleteTaxi);
-app.get('/dashboard/taxi/insert', TaxiRouter.insertTaxiForm);
+
 //Interrogazione CRUD entity payment
+app.get('/dashboard/payment/insert', PaymentRouter.insertPaymentForm);
 app.get('/dashboard/payment', PaymentRouter.getPayments);
-app.get('/dashboard/payment/:id', PaymentRouter.getPaymentById);
+app.get('/dashboard/payment/get/:id', PaymentRouter.getPaymentById);
 app.post('/dashboard/payment', PaymentRouter.createPayment);
 app.put('/dashboard/payment/:id', PaymentRouter.updatePayment);
-app.get('/dashboard/payment/:id', PaymentRouter.deletePayment);
+app.get('/dashboard/payment/delete/:id', PaymentRouter.deletePayment);
 //Interrogazione CRUD entity user
 app.get('/dashboard/user', UserRouter.getUsers);
 app.get('/dashboard/user/:id', UserRouter.getUserById);

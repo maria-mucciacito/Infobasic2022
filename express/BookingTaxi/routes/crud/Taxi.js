@@ -13,7 +13,6 @@ const getTaxis =
                 res.render('dashboard/taxi', {data: results.rows})
 
             }
-
             //res.status(200).json(results.rows)
         })
     };

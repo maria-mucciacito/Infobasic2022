@@ -8,10 +8,17 @@ const getPayments =
         db.query('SELECT * FROM pagamento ORDER BY id ASC;', (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/payment',{data: results.rows})
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
+
+const insertPaymentForm = 
+    (req,res)=>{
+        res.render('dashboard/insertPayment');
+    }
 
 const getPaymentById = 
     (req,res)=>{
@@ -19,8 +26,10 @@ const getPaymentById =
         db.query('SELECT * FROM pagamento WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/updatePayment', {data: results.rows[0]});
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
 
@@ -33,7 +42,8 @@ const createPayment =
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
             } else {
                 //res.status(201).json({"result":results})
-                res.status(201).send("MethodPayment added with ID: " + results.rows)
+                //res.status(201).send("MethodPayment added with ID: " + results.rows)
+                res.redirect('/dashboard/payment')
             }
             
         })
@@ -48,8 +58,10 @@ const updatePayment =
         (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/payment')
             }
-            res.status(200).send("MethodPayment modified with ID: " + id)
+            //res.status(200).send("MethodPayment modified with ID: " + id)
         })
 
 
@@ -61,8 +73,10 @@ const deletePayment=
         db.query('DELETE FROM pagamento WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/payment')
             }
-            res.status(200).send("MethodPayment deleted with ID: " + id)
+            //res.status(200).send("MethodPayment deleted with ID: " + id)
         })
     };
 
