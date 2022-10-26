@@ -18,14 +18,22 @@ const getTaxis =
         })
     };
 
+const insertTaxiForm = 
+    (req,res)=>{
+        res.render('dashboard/insertTaxi');
+    }
+
 const getTaxiById = 
     (req,res)=>{
         var id = parseInt(req.params.id);
         db.query('SELECT * FROM taxi WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/updateTaxi', {data: results.rows[0]});
+                
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
 
@@ -38,7 +46,8 @@ const createTaxi =
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
             } else {
                 //res.status(201).json({"result":results})
-                res.status(201).send("Taxi added with ID: " + results.rows)
+                //res.status(201).send("Taxi added with ID: " + results.rows)
+                res.redirect('/dashboard/taxi')
             }
             
         })
@@ -54,7 +63,6 @@ const updateTaxi =
     (req,res)=>{
         var id = parseInt(req.params.id)
         const {nome, targa, modello, descrizione } = req.body
-        console.log(id)
         db.query('UPDATE taxi SET nome=$1, targa=$2, modello=$3, descrizione=$4 WHERE id=$5;',
         [nome,targa,modello,descrizione,id],
         (error,results)=>{
@@ -62,6 +70,7 @@ const updateTaxi =
                 throw error
             } else {
                 res.redirect('/dashboard/taxi')
+                //res.status(200).send("Taxi modified with ID: " + id)
             }
             //res.status(200).send("Taxi modified with ID: " + id)
         })
@@ -73,9 +82,11 @@ const deleteTaxi=
         db.query('DELETE FROM taxi WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/taxi')
             }
-            res.status(200).send("Taxi deleted with ID: " + id)
+            //res.status(200).send("Taxi deleted with ID: " + id)
         })
     };
 
-module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi};
+module.exports = {getTaxis,getTaxiById,createTaxi,updateTaxi,deleteTaxi,insertTaxiForm};

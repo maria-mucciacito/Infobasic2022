@@ -2,7 +2,7 @@
     <div class="row m-3">
     <div class="col-10"><h2>Gestione Taxi</h2></div>
     <div class="col-2">
-        <a class="btn btn-warning" href="#" role="button">+ Insert</a>
+        <a class="btn btn-warning" href="/dashboard/taxi/insert" role="button">+ Insert</a>
     </div>
     </div>
     <div class="row m-3">
@@ -27,7 +27,7 @@
                     <td>{{this.modello}}</td>
                     <td>{{this.descrizione}}</td>
                     <td><a class="btn btn-dark btn-sm" href="/dashboard/taxi/{{this.id}}" role="button">Update</a></td>
-                    <td><a class="btn btn-dark btn-sm" href="" role="button">Delete</a></td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/taxi/delete/{{this.id}}" role="button" onclick="return window.confirm('Sei sicuro di voler cancellare {{this.nome}} ?'); ">Delete</a></td>
                 </tr>
             {{/each}}
             
@@ -35,3 +35,8 @@
         </table>
     </div>
 </div>
+
+
+<script>
+
+</script>
