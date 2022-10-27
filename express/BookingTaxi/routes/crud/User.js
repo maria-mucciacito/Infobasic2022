@@ -9,10 +9,17 @@ const getUsers =
         db.query('SELECT * FROM utente ORDER BY id ASC;', (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/user', {data: results.rows})
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
+
+const insertUserForm = 
+    (req,res)=>{
+        res.render('dashboard/insertUser');
+    }
 
 const getUserById = 
     (req,res)=>{
@@ -20,8 +27,10 @@ const getUserById =
         db.query('SELECT * FROM utente WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/updateUser', {data: results.rows[0]});
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
 
@@ -34,7 +43,8 @@ const createUser =
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
             } else {
                 //res.status(201).json({"result":results})
-                res.status(201).send("User added with ID: " + results.rows)
+                //res.status(201).send("User added with ID: " + results.rows)
+                res.redirect('/dashboard/user')
             }
             
         })
@@ -49,8 +59,10 @@ const updateUser=
         (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/user')
             }
-            res.status(200).send("User modified with ID: " + id)
+            //res.status(200).send("User modified with ID: " + id)
         })
 
 
@@ -62,9 +74,11 @@ const deleteUser=
         db.query('DELETE FROM utente WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/user')
             }
-            res.status(200).send("User deleted with ID: " + id)
+            //res.status(200).send("User deleted with ID: " + id)
         })
     };
 
-module.exports = {getUsers,getUserById,createUser,updateUser,deleteUser};
+module.exports = {getUsers,getUserById,createUser,updateUser,deleteUser,insertUserForm};

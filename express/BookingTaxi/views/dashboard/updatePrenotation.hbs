@@ -1,0 +1,51 @@
+<h2 class="m-3 text-center">Update Prenotazione</h2>
+<div class="container text-center">
+  <div class="row m-3">
+    <form class="row g-3" method="post" action="/dashboard/prenotation/get/{{data.id}}">
+      <div class="col-md-6">
+        <label for="data" class="form-label">Data</label>
+        <input type="date" class="form-control" id="data" value="{{data.data}}" name="data" required>
+      </div>
+      <div class="col-md-6">
+        <label for="oraPartenza" class="form-label">Ora Partenza</label>
+        <input type="time" class="form-control" id="oraPartenza" value="{{data.ora_partenza}}" name="oraPartenza" required>
+      </div>
+      <div class="col-md-6">
+        <label for="puntoPartenza" class="form-label">Punto di Partenza</label>
+        <input type="text" class="form-control" id="puntoPartenza" value="{{data.punto_partenza}}" name="puntoPartenza" required>
+      </div>
+      <div class="col-md-6">
+        <label for="puntoArrivo" class="form-label">Punto di Arrivo</label>
+        <input type="text" class="form-control" id="puntoArrivo" value="{{data.punto_arrivo}}" name="puntoArrivo" required>
+      </div>
+      <div class="col-md-6">
+        <label for="costo" class="form-label">Costo</label>
+        <input type="text" class="form-control" id="costo" value="{{data.costo}}" name="costo" required>
+      </div>
+      <div class="col-md-6">
+        <label for="distanzaKm" class="form-label">Km Distanza</label>
+        <input type="number" class="form-control" id="distanzaKm" value="{{data.distanza_km}}" name="distanzaKm" required>
+      </div>
+      <div class="col-md-6">
+        <label for="utente" class="form-label">Utente</label>
+        <input type="number" class="form-control" id="utente" value="{{data.utente}}" name="utente" required>
+      </div>
+      <div class="col-md-6">
+        <label for="taxi" class="form-label">Taxi</label>
+        <input type="number" class="form-control" id="taxi" value="{{data.taxi}}" name="taxi"  required>
+      </div>
+      <div class="col-md-6">
+        <label for="pagamento" class="form-label">Pagamento</label>
+        <input type="number" class="form-control" id="pagamento" value="{{data.pagamento}}" name="pagamento" required>
+      </div>
+      <div class="col-md-6">
+        <label for="codePrenotazione" class="form-label">Code Prenotazione</label>
+        <input type="text" class="form-control" id="codePrenotazione" value="{{data.code_prenotazione}}" name="codePrenotazione" required>
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-warning mt-5">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

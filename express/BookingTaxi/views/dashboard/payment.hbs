@@ -1,6 +1,6 @@
 <div class="conteiner container-fluid m-5 p-3">
     <div class="row m-3">
-    <div class="col-10"><h2>Gestione Payment</h2></div>
+    <div class="col-10"><h2>Gestione Pagamenti</h2></div>
     <div class="col-2">
         <a class="btn btn-warning" href="/dashboard/payment/insert" role="button">+ Insert</a>
     </div>
@@ -14,18 +14,20 @@
                     <th scope="col">SCADENZA</th>
                     <th scope="col">CODE SICUREZZA</th>
                     <th scope="col">TIPO</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">DELETE</th>
                 </tr>
             </thead>
             <tbody>
             {{#each data}}
                 <tr>
                     <td>{{this.id}}</td>
-                    <td>{{this.numero}}</td>
-                    <td>{{this.targa}}</td>
-                    <td>{{this.modello}}</td>
-                    <td>{{this.descrizione}}</td>
-                    <td><a class="btn btn-dark btn-sm" href="/dashboard/taxi/{{this.id}}" role="button">Update</a></td>
-                    <td><a class="btn btn-dark btn-sm" href="/dashboard/taxi/delete/{{this.id}}" role="button" onclick="return window.confirm('Sei sicuro di voler cancellare {{this.nome}} ?'); ">Delete</a></td>
+                    <td>{{this.numero_carta}}</td>
+                    <td>{{this.scadenza}}</td>
+                    <td>{{this.code_sicurezza}}</td>
+                    <td>{{this.tipo}}</td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/payment/{{this.id}}" role="button">Update</a></td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/payment/delete/{{this.id}}" role="button" onclick="return window.confirm('Sei sicuro di voler cancellare la carta numero {{this.numero_carta}} ?'); ">Delete</a></td>
                 </tr>
             {{/each}}
             

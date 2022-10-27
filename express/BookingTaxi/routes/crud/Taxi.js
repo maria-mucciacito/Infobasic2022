@@ -4,6 +4,7 @@ var router = express.Router();
 var dbPool = require('../db');
 var db = dbPool.getPool();
 
+//router for page of total taxi rows
 const getTaxis = 
     (req,res)=>{
         db.query('SELECT * FROM taxi ORDER BY id ASC;', (error,results)=>{
@@ -17,11 +18,13 @@ const getTaxis =
         })
     };
 
+//router for page of insert taxi form 
 const insertTaxiForm = 
     (req,res)=>{
         res.render('dashboard/insertTaxi');
     }
 
+//router for page of update taxi row
 const getTaxiById = 
     (req,res)=>{
         var id = parseInt(req.params.id);
@@ -36,6 +39,7 @@ const getTaxiById =
         })
     };
 
+//router for create a new row of taxi
 const createTaxi = 
     (req,res)=>{
         const {nome, targa, modello, descrizione } = req.body
@@ -58,6 +62,7 @@ const createTaxi =
         res.render('dashboard/updateTaxi');
     }*/
 
+//router for update a row of taxi
 const updateTaxi = 
     (req,res)=>{
         var id = parseInt(req.params.id)
@@ -75,6 +80,7 @@ const updateTaxi =
         })
     };
 
+//router for delete a row of taxi
 const deleteTaxi= 
     (req,res)=>{
         var id = parseInt(req.params.id)

@@ -1,0 +1,42 @@
+<div class="conteiner container-fluid m-5 p-3">
+    <div class="row m-3">
+    <div class="col-10"><h2>Gestione Utenti</h2></div>
+    <div class="col-2">
+        <a class="btn btn-warning" href="/dashboard/user/insert" role="button">+ Insert</a>
+    </div>
+    </div>
+    <div class="row m-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">CODICE FISCALE</th>
+                    <th scope="col">NOME</th>
+                    <th scope="col">COGNOME</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">PASSWORD</th>
+                    <th scope="col">RUOLO</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.codice_fiscale}}</td>
+                    <td>{{this.nome}}</td>
+                    <td>{{this.cognome}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.password}}</td>
+                    <td>{{this.ruolo}}</td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/user/{{this.id}}" role="button">Update</a></td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/user/delete/{{this.id}}" role="button" onclick="return window.confirm('Sei sicuro di voler cancellare {{this.codice_fiscale}} ?'); ">Delete</a></td>
+                </tr>
+            {{/each}}
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+

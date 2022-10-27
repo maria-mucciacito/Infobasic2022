@@ -9,10 +9,17 @@ const getPrenotations =
         db.query('SELECT * FROM prenotazione ORDER BY id ASC;', (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/prenotation', {data: results.rows})
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
+
+const insertPrenotationForm = 
+    (req,res)=>{
+        res.render('dashboard/insertPrenotation')
+    }
 
 const getPrenotationById = 
     (req,res)=>{
@@ -20,8 +27,10 @@ const getPrenotationById =
         db.query('SELECT * FROM prenotazione WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.render('dashboard/udatePrenotation', {data: results.rows[0]});
             }
-            res.status(200).json(results.rows)
+            //res.status(200).json(results.rows)
         })
     };
 
@@ -34,7 +43,8 @@ const createPrenotation =
                 res.status(500).json({"message":error,"code":500,"result":results,"postdata":req.body});
             } else {
                 //res.status(201).json({"result":results})
-                res.status(201).send("Prenotation added with ID: " + results.rows)
+                //res.status(201).send("Prenotation added with ID: " + results.rows)
+                res.redirect('/dashboard/prenotation')
             }
             
         })
@@ -49,8 +59,10 @@ const updatePrenotation =
         (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/prenotation')
             }
-            res.status(200).send("Prenotation modified with ID: " + id)
+            //res.status(200).send("Prenotation modified with ID: " + id)
         })
 
 
@@ -62,9 +74,11 @@ const deletePrenotation=
         db.query('DELETE FROM prenotazione WHERE id=$1;',[id], (error,results)=>{
             if(error){
                 throw error
+            } else {
+                res.redirect('/dashboard/prenotation')
             }
-            res.status(200).send("Prenotation deleted with ID: " + id)
+            //res.status(200).send("Prenotation deleted with ID: " + id)
         })
     };
 
-module.exports = {getPrenotations,getPrenotationById,createPrenotation,updatePrenotation,deletePrenotation};
+module.exports = {getPrenotations,getPrenotationById,createPrenotation,updatePrenotation,deletePrenotation,insertPrenotationForm};

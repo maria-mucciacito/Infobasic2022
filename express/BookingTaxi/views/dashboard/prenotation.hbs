@@ -1,0 +1,50 @@
+<div class="conteiner container-fluid m-5 p-3">
+    <div class="row m-3">
+    <div class="col-10"><h2>Gestione Prenotazioni</h2></div>
+    <div class="col-2">
+        <a class="btn btn-warning" href="/dashboard/prenotation/insert" role="button">+ Insert</a>
+    </div>
+    </div>
+    <div class="row m-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">DATA</th>
+                    <th scope="col">ORA PARTENZA</th>
+                    <th scope="col">PUNTO DI PARTENZA</th>
+                    <th scope="col">PUNTO DI ARRIVO</th>
+                    <th scope="col">COSTO</th>
+                    <th scope="col">KM DISTANZA</th>
+                    <th scope="col">UTENTE</th>
+                    <th scope="col">TAXI</th>
+                    <th scope="col">PAGAMENTO</th>
+                    <th scope="col">CODE PRENOTAZIONE</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each data}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.data}}</td>
+                    <td>{{this.ora_partenza}}</td>
+                    <td>{{this.punto_partenza}}</td>
+                    <td>{{this.punto_arrivo}}</td>
+                    <td>{{this.costo}}</td>
+                    <td>{{this.distanza_km}}</td>
+                    <td>{{this.utente}}</td>
+                    <td>{{this.taxi}}</td>
+                    <td>{{this.pagamento}}</td>
+                    <td>{{this.code_prenotazione}}</td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/prenotation/{{this.id}}" role="button">Update</a></td>
+                    <td><a class="btn btn-dark btn-sm" href="/dashboard/prenoatation/delete/{{this.id}}" role="button" onclick="return window.confirm('Sei sicuro di voler cancellare {{this.code_prenotazione}} ?'); ">Delete</a></td>
+                </tr>
+            {{/each}}
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -80,4 +80,4 @@ const deletePayment=
         })
     };
 
-module.exports = {getPayments,getPaymentById,createPayment,updatePayment,deletePayment};
+module.exports = {getPayments,getPaymentById,createPayment,updatePayment,deletePayment,insertPaymentForm};

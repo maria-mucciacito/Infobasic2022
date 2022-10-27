@@ -4,19 +4,19 @@
     <form class="row g-3" method="post" action="/dashboard/taxi/get/{{data.id}}">
       <div class="col-md-6">
         <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" value="{{data.nome}}" name="nome">
+        <input type="text" class="form-control" id="nome" value="{{data.nome}}" name="nome" required>
       </div>
       <div class="col-md-6">
         <label for="targa" class="form-label">Targa</label>
-        <input type="text" class="form-control" id="targa" value="{{data.targa}}" name="targa">
+        <input type="text" class="form-control" id="targa" value="{{data.targa}}" name="targa" required>
       </div>
       <div class="col-md-6">
-        <label for="mdoello" class="form-label">Modello</label>
-        <input type="text" class="form-control" id="modello" value="{{data.modello}}" name="modello">
+        <label for="modello" class="form-label">Modello</label>
+        <input type="text" class="form-control" id="modello" value="{{data.modello}}" name="modello" required>
       </div>
       <div class="col-md-6">
         <label for="descrizione" class="form-label">Descrizione</label>
-        <input type="text" class="form-control" id="descrizione" value="{{data.descrizione}}" name="descrizione">
+        <input type="text" class="form-control" id="descrizione" value="{{data.descrizione}}" name="descrizione" required>
       </div>
       <div class="col-12">
         <button class="btn btn-warning mt-5">Update</button>

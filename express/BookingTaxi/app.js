@@ -3,8 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//require for views hbs
 var hbs = require('hbs');
+//require for database
 var db = require('./routes/db');
+//require for passage of paremetres
 const bodyParser = require('body-parser')
 //credenziali per database
 require('dotenv').config();
@@ -28,6 +31,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+//path for partials(header and footer)
 hbs.registerPartials(path.join(__dirname,'views/partials'), (err) => {});
 
 app.use(logger('dev'));
@@ -63,26 +67,27 @@ app.get('/dashboard/taxi/get/:id', TaxiRouter.getTaxiById);
 app.post('/dashboard/taxi', TaxiRouter.createTaxi);
 app.post('/dashboard/taxi/:id', TaxiRouter.updateTaxi);
 app.get('/dashboard/taxi/delete/:id', TaxiRouter.deleteTaxi);
-
 //Interrogazione CRUD entity payment
 app.get('/dashboard/payment/insert', PaymentRouter.insertPaymentForm);
 app.get('/dashboard/payment', PaymentRouter.getPayments);
 app.get('/dashboard/payment/get/:id', PaymentRouter.getPaymentById);
 app.post('/dashboard/payment', PaymentRouter.createPayment);
-app.put('/dashboard/payment/:id', PaymentRouter.updatePayment);
+app.post('/dashboard/payment/:id', PaymentRouter.updatePayment);
 app.get('/dashboard/payment/delete/:id', PaymentRouter.deletePayment);
 //Interrogazione CRUD entity user
+app.get('/dashboard/user/insert', UserRouter.insertUserForm);
 app.get('/dashboard/user', UserRouter.getUsers);
-app.get('/dashboard/user/:id', UserRouter.getUserById);
+app.get('/dashboard/user/get/:id', UserRouter.getUserById);
 app.post('/dashboard/user', UserRouter.createUser);
-app.put('/dashboard/user/:id', UserRouter.updateUser);
-app.delete('/dashboard/user/:id', UserRouter.deleteUser);
+app.post('/dashboard/user/:id', UserRouter.updateUser);
+app.get('/dashboard/user/delete/:id', UserRouter.deleteUser);
 //Interrogazione CRUD entity prenotazione 
+app.get('/dashboard/prenotation/insert', PrenotationRouter.insertPrenotationForm);
 app.get('/dashboard/prenotation', PrenotationRouter.getPrenotations);
-app.get('/dashboard/prenotation/:id', PrenotationRouter.getPrenotationById);
+app.get('/dashboard/prenotation/get/:id', PrenotationRouter.getPrenotationById);
 app.post('/dashboard/prenotation', PrenotationRouter.createPrenotation);
-app.put('/dashboard/prenotation/:id', PrenotationRouter.updatePrenotation);
-app.delete('/dashboard/prenotation/:id', PrenotationRouter.deletePrenotation);
+app.post('/dashboard/prenotation/:id', PrenotationRouter.updatePrenotation);
+app.get('/dashboard/prenotation/delete/:id', PrenotationRouter.deletePrenotation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
