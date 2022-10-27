@@ -2,24 +2,32 @@ var express = require('express');
 var router = express.Router();
 var dbPool = require('./db');
 var db = dbPool.getPool();
-const credentials= {
-  email: "admin@example.it",
-  password: "admin"
-}
+const checkSignIn = require('../middleware');
+//sessione per login
+const session = require("express-session");
+const {v4:uuidv4} = require("uuid");
+
 
 /* GET page of login. */
 router.get('/', function(req, res, next) {
   res.render('login');
 });
 
-router.post('/',(req,res)=>{
-  var user = req.body.username;
+/*router.post('/',(req,res)=>{
+  const {email,password} = req.body
+  var values = [email,password];
+  var text = 'SELECT * FROM utente WHERE email = $1 AND password = $2;';
+
+
+
+
+   var user = req.body.username;
   var password = req.body.password;
   var values = [user,password];
   var text = 'SELECT * FROM utente WHERE email = $1 AND password = $2;';
   if(user==credentials.email && password==credentials.password){
     req.session.user = user
-    res.redirect('/login/dashboard')
+    res.redirect('/dashboard') 
   } else {
     db.query(text,values,(err,result)=> {
       if(err){
@@ -34,7 +42,7 @@ router.post('/',(req,res)=>{
     //res.end("Invalid")
   }
   
-})
+})*/
 
 router.get('/dashboard',(req,res)=>{
     if(req.session.user){

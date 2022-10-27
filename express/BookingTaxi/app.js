@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//package for login auth
+const bcrypt = require('bcrypt');
+const initializePassport = require('./passport-config');
 //require for views hbs
 var hbs = require('hbs');
 //require for database
@@ -52,6 +55,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
 
 //Routers per autentificazione
 app.use('/', indexRouter);
