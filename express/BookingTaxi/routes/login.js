@@ -5,11 +5,24 @@ var db = dbPool.getPool();
 const checkSignIn = require('../middleware');
 //sessione per login
 const session = require("express-session");
-const {v4:uuidv4} = require("uuid");
+const passport = require('passport');
 
+function checkAuthenticated(req,res,next){
+  if(req.isAuthenticated()){
+    return next()
+  }
+  res.redirect('/login')
+}
+
+function checkNotAuthenticated(req,res,next){
+  if(req.isAuthenticated()){
+    return res.redirect('/dashboard')
+  }
+  next()
+}
 
 /* GET page of login. */
-router.get('/', function(req, res, next) {
+router.get('/',checkNotAuthenticated ,function(req, res, next) {
   res.render('login');
 });
 
@@ -44,12 +57,10 @@ router.get('/', function(req, res, next) {
   
 })*/
 
-router.get('/dashboard',(req,res)=>{
-    if(req.session.user){
-      res.render('dashboard/dashboard',{user:req.session.user})
-    }else{
-      res.end("Unauthorize User")
-    }
-  })
+router.post('/',passport.authenticate('local',{
+  successRedirect: '/dashboard',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
 
 module.exports = router;

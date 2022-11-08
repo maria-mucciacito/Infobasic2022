@@ -6,6 +6,9 @@ var logger = require('morgan');
 //package for login auth
 const bcrypt = require('bcrypt');
 const initializePassport = require('./passport-config');
+const passport = require('passport')
+const flash = require('express-flash')
+initializePassport(passport )
 //require for views hbs
 var hbs = require('hbs');
 //require for database
@@ -50,11 +53,14 @@ app.use(
 )
 
 //processi per stabilire la sessione per il login
+app.use(flash())
 app.use(session({
-  secret: uuidv4(),
+  secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true
-}))
+  saveUninitialized: false
+})) 
+app.use(passport.session())
+app.use(passport.initialize())
 
 
 //Routers per autentificazione
@@ -63,6 +69,15 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/signup', logupRouter);
 app.use('/logout', logoutRouter);
+
+app.get('/dashboard',(req,res)=>{
+  res.render('dashboard/dashboard')
+  /*if(req.session.user){
+    res.render('dashboard/dashboard',{user:req.session.user})
+  }else{
+    res.end("Unauthorize User")
+  }*/
+})
 
 //Interrogazione CRUD entity taxi
 app.get('/dashboard/taxi/insert', TaxiRouter.insertTaxiForm);

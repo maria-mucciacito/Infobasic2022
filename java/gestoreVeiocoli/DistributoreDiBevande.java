@@ -1,13 +1,15 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class DistributoreDiBevande {
     private int numProdotti;
-    private List<Prodotto> prodotti;
-    private double credito = 0.0;
+    private ArrayList<Prodotto> prodotti;
+    private double credito;
 
     //COSTRUTTORE
     public DistributoreDiBevande(int numProdotti){
         this.numProdotti = numProdotti;
+        this.credito = 0.0;
+        prodotti = new ArrayList<>();
     }
 
     //SETTER E GETTER
@@ -19,17 +21,22 @@ public class DistributoreDiBevande {
         this.numProdotti = numProdotti;
     }
     
-    public List<Prodotto> getProdotti() {
+    public ArrayList<Prodotto> getProdotti() {
         return prodotti;
     }
 
-    public void setOperations(List<Prodotto> prodotti) {
+    public void setOperations(ArrayList<Prodotto> prodotti) {
         this.prodotti = prodotti;
     }
 
     //METODI
-    public void caricaProdotto(Prodotto p){
-        prodotti.add(p);
+    public boolean caricaProdotto(Prodotto p){
+        if(prodotti.size()<numProdotti){
+            prodotti.add(p);
+        } else {
+            return false;
+        }
+        return true;
     }
 
     public void inserisciImporto(double importo){
@@ -37,24 +44,21 @@ public class DistributoreDiBevande {
         System.out.println("Il tuo credito adesso è di " + this.credito);
     }
 
-    public void scegliProdotto(String codiceProdotto){
-        prodotti.forEach((p) -> { 
-            String result; 
+    public Prodotto scegliProdotto(String codiceProdotto){
+        Prodotto result = null;
+        for(Prodotto p: prodotti){
             if(p.getCodeUnivoco()==codiceProdotto){
                 if(credito>=p.getPrezzo()){
-                    System.out.println("Ecco a te il prodotto" + codiceProdotto );
+                    System.out.println("Ecco a te il prodotto  " + codiceProdotto );
                     this.credito -= p.getPrezzo();
-                    result = p.toString();
+                    return p;
 
                 } else {
-                    result = "Credito non sufficiente";
+                    System.out.print("Credito non sufficiente");
                 }
-            }else {
-                result = "Prodotto non disponibile";
             }
-        
-        });
-        //return result;
+        }
+        return result;
         
         
     }
@@ -65,7 +69,7 @@ public class DistributoreDiBevande {
 
     public double getResto(){
         double resto = this.credito;
-        System.out.println("Ecco a te il resto di " + this.credito);
+        //System.out.println("Ecco a te il resto di " + this.credito);
         this.credito = 0;
         return resto;
     }

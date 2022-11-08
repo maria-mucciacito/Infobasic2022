@@ -1,11 +1,10 @@
 
-
 public class Prodotto {
     private String codeUnivoco;
     private double prezzo;
 
-    //COSTRUTTORE
-    public Prodotto(String code, double prezzo){
+    // COSTRUTTORE
+    public Prodotto(String code, double prezzo) {
         this.codeUnivoco = code;
         this.prezzo = prezzo;
     }
@@ -19,7 +18,7 @@ public class Prodotto {
                 '}';
     }
 
-    //SETTER E GETTER
+    // SETTER E GETTER
     public double getPrezzo() {
         return prezzo;
     }
@@ -35,5 +34,5 @@ public class Prodotto {
     public void setCodeUnivoco(String code) {
         this.codeUnivoco = code;
     }
-    
+
 }

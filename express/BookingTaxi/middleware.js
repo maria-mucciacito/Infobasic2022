@@ -1,3 +1,4 @@
+/*
 //middleware
 function checkSignIn(req,res){
     if(req.session.user){
@@ -9,7 +10,7 @@ function checkSignIn(req,res){
 }
 
 
-/*db.query('SELECT * FROM utente WHERE email=$1', [email],(err,results)=>{
+db.query('SELECT * FROM utente WHERE email=$1', [email],(err,results)=>{
     if(err){
         throw err
     } else {
@@ -18,6 +19,7 @@ function checkSignIn(req,res){
         }
     }
 })
-db.end()*/
+db.end()
 
 module.exports = checkSignIn
+*/
