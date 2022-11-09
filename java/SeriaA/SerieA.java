@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.Collections;
 
 public class SerieA implements Classifica{
@@ -30,6 +31,13 @@ public class SerieA implements Classifica{
     public void getClassifica(){
 
     }
+
+    public void risultatoPartita( Squadra squadraCasa,Squadra squadraFuoriCSquadra,int golCasa,int golFuoriCasa){
+
+        if(squadraCasa.equals(squadraFuoriCSquadra)){
+            return;
+        }
+    }
 ;
     public Squadra getMigliorAttacco(){
         Squadra max = null;
@@ -40,8 +48,8 @@ public class SerieA implements Classifica{
         //System.out.println(punteggiSquadre);
         int puntMax = Collections.max(punteggiSquadre);
         //System.out.println(Collections.max(punteggiSquadre));
-        System.out.println(squadre.stream().filter(t -> t.getPunteggio()==puntMax));
-        squadre.stream().filter(t -> t.getPunteggio()==puntMax);
+        List<Squadra> filterList = squadre.stream().filter(t -> t.getPunteggio()==puntMax).collect(Collectors.toList());
+        max = filterList.get(0);
         return max;
     }
 
