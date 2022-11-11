@@ -16,6 +16,5 @@ public class Main{
         SerieA serieA = new SerieA(20, s);
         System.out.print(serieA.getMigliorAttacco());  
         //Giocatore g1 = new Giocatore("1", "Paolo", "Dybala",roma);
-
     }
 }
