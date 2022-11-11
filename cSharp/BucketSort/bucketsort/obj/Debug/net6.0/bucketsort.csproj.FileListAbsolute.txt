@@ -1,0 +1,15 @@
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/bin/Debug/net6.0/bucketsort
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/bin/Debug/net6.0/bucketsort.deps.json
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/bin/Debug/net6.0/bucketsort.runtimeconfig.json
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/bin/Debug/net6.0/bucketsort.dll
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/bin/Debug/net6.0/bucketsort.pdb
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.csproj.AssemblyReference.cache
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.AssemblyInfoInputs.cache
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.AssemblyInfo.cs
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.csproj.CoreCompileInputs.cache
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.dll
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/refint/bucketsort.dll
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.pdb
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/bucketsort.genruntimeconfig.cache
+/Users/mucciacitomaria/Desktop/cSharp/BucketSort/bucketsort/obj/Debug/net6.0/ref/bucketsort.dll

@@ -1,0 +1,15 @@
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/bin/Debug/net6.0/stringReverse
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/bin/Debug/net6.0/stringReverse.deps.json
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/bin/Debug/net6.0/stringReverse.runtimeconfig.json
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/bin/Debug/net6.0/stringReverse.dll
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/bin/Debug/net6.0/stringReverse.pdb
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.csproj.AssemblyReference.cache
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.AssemblyInfoInputs.cache
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.AssemblyInfo.cs
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.csproj.CoreCompileInputs.cache
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.dll
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/refint/stringReverse.dll
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.pdb
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/stringReverse.genruntimeconfig.cache
+/Users/mucciacitomaria/Desktop/cSharp/StringReverse/stringReverse/obj/Debug/net6.0/ref/stringReverse.dll
