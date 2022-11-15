@@ -26,12 +26,21 @@ public class Negozio{
         this.listaProdotti = listaProdotti;
     }
 
+    public int getQuantitaAttuale() {
+        return this.quantitaAttuale;
+    }
+
+    public void setQuantitaAttuale(int quantitaAttuale) {
+        this.quantitaAttuale = quantitaAttuale;
+    }
+
     public void aggiungiProdotto(Prodotto p){
-        if(this.quantitaAttuale>=100){
+        if(this.quantitaAttuale>=10){
             System.out.println("Lo scaffale può contenere al massimo 10 prodotti! Esso è già al completo");
             return;
         }else{
             this.listaProdotti.add(p);
+            this.quantitaAttuale+=1;
             System.out.println("Il prodotto è stato aggiunto allo scaffale");
         }
     }
@@ -45,6 +54,7 @@ public class Negozio{
             }
         }
         return flag;
+        //System.out.println("esito");
     }
 
     public int ottieniQuantitaResidua(Prodotto p){
@@ -62,7 +72,8 @@ public class Negozio{
         for (Prodotto prodotto : listaP) {
             if(this.listaProdotti.contains(prodotto)){
                 totPgamento += prodotto.getPrezzo();
-                rimuoviProdottoById(prodotto);
+                System.out.println(totPgamento);
+                this.rimuoviProdottoById(prodotto);
             }
         }
         return totPgamento;
