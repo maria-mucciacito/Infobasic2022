@@ -1,0 +1,5 @@
+<dependency>
+    <groupid>io.javalin</groupid>
+    <artifactid>javalin</artifactid>
+    <version>2.5.0</version>
+</dependency>

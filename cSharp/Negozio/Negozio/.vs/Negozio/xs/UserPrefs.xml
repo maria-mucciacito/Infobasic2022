@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{73FC9E8A-FF46-47B2-8599-06FEAA0C0F81}|Default">
+  <MonoDevelop.Ide.ItemProperties.Negozio PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/NegozioContext.cs">
+    <Files>
+      <File FileName="GiornoSettimana.cs" Line="9" Column="4" />
+      <File FileName="Program.cs" Line="4" Column="1" />
+      <File FileName="Negozio.cs" Line="1" Column="1" />
+      <File FileName="TipoProdotto.cs" Line="4" Column="4" />
+      <File FileName="Data/NegozioContext.cs" Line="20" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Negozio" expanded="True">
+            <Node name="Negozio" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
