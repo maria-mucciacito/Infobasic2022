@@ -1,0 +1,17 @@
+REDUX 
+libreria javascript open source 
+creata da Dan Abramov a Andrew Clark nel 2015
+usata soprattutto con react
+
+
+STATE =  un oggetto che rappresenta le parti dell'app che possono cambiare 
+esempio : utente loggato?  todos+1
+REDUX ti permette di avere uno store centrale dove si trovano dati che possono essere condivisi tra più componenti
+
+COME FUNZIONA REDUX?
+-store centrale = STATE DI TUTTA L'APPLICAZIONE
+Quando un componente vuole cambiare gli state fa un DISPATCH dell'Action , ovvero un pacchetto di informazioni che mandiamo
+Poi abbiamo il reducer che è un elemento che modifica lo state
+Attraverso la SUBSCRIPTION POSSIAMO iscrivere il complemento all'evento, quindi ricevere il nuovo state con il cambiamento
+
+ per installare : npm install --save redux
